@@ -1,0 +1,33 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "command": "g++",
+            "args": [
+                "-g",
+                "--std=c++11",
+                "Application/main.cpp",
+                "-m64", "-o", "guacamole", 
+                "Engine/src/Geometry.cpp",
+                "Engine/src/Model.cpp",
+                "Engine/src/Scene.cpp",
+                "Engine/src/Primitive.cpp",
+                "Engine/src/Texture.cpp",
+                "Engine/src/Animation.cpp",
+                "Application/DeliveryTruck.cpp",
+
+                "Dependencies/include/stb_image/stb_image.cpp", "-static-libgcc", "-static-libstdc++",
+
+                "-lopengl32",
+                "-lmingw32",
+                "-lglfw3",
+                "-lglew32",
+                "-lgdi32"
+            ],
+            "type": "process"
+        }
+    ]
+}

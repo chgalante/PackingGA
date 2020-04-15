@@ -181,11 +181,11 @@ struct Individual
                 current_pos_y = current_pos_y + packages[current_package].height;
             }
             /* If not, start a new row, if the truck doesn't overflow with the current package place it */
-            else if(current_pos_z - packages[current_package].length <= 0)
+            else if(current_pos_z + packages[current_package].length <= TRUCK_LENGTH)
             {
                 /* Start new row */
                 current_pos_y = 0;
-                current_pos_z = current_pos_z - packages[current_package].length;
+                current_pos_z = current_pos_z + packages[current_package].length;
 
                 /* Place package */
                 packages[current_package].pos = glm::vec3(current_pos_x * 1.0f, current_pos_y * 1.0f, current_pos_z * 1.0f);
@@ -205,7 +205,7 @@ struct Individual
             {
                 for(int j = 0; j < packages[current_package].height; j++)
                 {
-                    depth_map[i][j] = current_pos_z - packages[current_package].length;
+                    depth_map[i][j] = current_pos_z + packages[current_package].length;
                 }
             }
 
@@ -589,7 +589,7 @@ public:
             /* Create a model for this package for rendering*/
             newPackageModel = CreateModelPrimitive(CUBE, mTruck);
             newPackageModel->SetModelVisibility(false);
-            newPackageModel->SetModelFragmentColour(glm::vec4(1.0f,1.0f,1.0f,1.0f));
+            newPackageModel->SetModelFragmentColour(glm::vec4(cos((float)i*0.5),sin((float)i*0.25),0.5f, 1.0f));
             mPackages.insert(std::pair<int, Model*>(newPackage.id, newPackageModel));
         }
 

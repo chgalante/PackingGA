@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/Dependencies/include",
                 "${workspaceFolder}/Engine/include",
-                "${workspaceFolder}/InteractiveMuseum"
+                "${workspaceFolder}/Application"
             ],
             "defines": [
                 "_DEBUG",

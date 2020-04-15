@@ -12,8 +12,8 @@
 #include <glm/glm.hpp>  // GLM is an optimized math library with syntax to similar to OpenGL Shading Language
 #include <glm/gtc/matrix_transform.hpp> // include this to create transformation matrices
 
-#include "ArtifactRoomScene.cpp"
-#include "BlackHoleRoom.cpp"
+#include "DeliveryTruck.cpp"
+
 
 // Function prototypes
 void CameraController(GLFWwindow* window, Scene* currentScene, float dt);
@@ -72,7 +72,7 @@ int main()
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     //Set background colour
-    glClearColor(0.4f, 0.8f, 0.8f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
@@ -87,12 +87,9 @@ int main()
     float lastButtonTime = 0.0f;
     
     /* Scene Initialization */
-    ArtifactRoomScene* ArtifactRoom = new ArtifactRoomScene(window_width, window_height);
-    BlackHoleRoomScene* BlackHoleRoom = new BlackHoleRoomScene(window_width, window_height);
-    ArtifactRoom->Initialize();
-    BlackHoleRoom->Initialize();
-    currentScene = ArtifactRoom;
-    currentScene->SetKeyCallback(window);
+    DeliveryTruckScene* sDeliveryTruck = new DeliveryTruckScene(window);
+    sDeliveryTruck->Initialize();
+    currentScene = sDeliveryTruck;
 
     /* Initialize Cursor */
     glfwSetCursorPos(window, window_width/2, window_height/2);
@@ -103,7 +100,7 @@ int main()
 		dt = glfwGetTime() - lastFrameTime;
 		lastFrameTime += dt;
 
-        currentScene->InputController(window);
+        //currentScene->InputController(window);
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -147,15 +144,6 @@ void CameraController(GLFWwindow* window, Scene* currentScene, float dt)
     {
         currentScene->TranslateCameraRight(dt * fCameraMovementSpeed);
     }
-    /*if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-    {
-        if(bLockCursor)
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        else
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-        bLockCursor = !bLockCursor;
-    }*/
 }
 void mouse_movement_callback(GLFWwindow* window, double xpos, double ypos)
 {

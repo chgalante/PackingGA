@@ -44,6 +44,7 @@ public:
     unsigned int render_mode = GL_TRIANGLES;
     bool textures_enabled = false;
     bool transparency_enabled = false;
+    bool visibility_enabled = true;
 
     /* Shader */
     ShaderProgram* model_shader_program;
@@ -58,6 +59,7 @@ public:
     void SetModelTexture(Texture* tex);
     void SetModelRenderMode(unsigned int m);
     void SetModelTransparency(bool isTransparent);
+    void SetModelVisibility(bool isVisible);
 
     /* Model Transformations */
     void TranslateModel(glm::vec3 translation);
@@ -66,6 +68,7 @@ public:
     void ScaleModelAndChildren(glm::vec3 scalars);
     void RotateModel(float angle, glm::vec3 axis);
     void RotateModelAndChildren(float angle, glm::vec3 axis);
+    void ResetModel();
 
     /* Animation */
     glm::vec3 GetModelPosition(void);

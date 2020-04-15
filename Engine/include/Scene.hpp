@@ -13,10 +13,8 @@ class ShaderProgram;
 class Scene
 {   
 protected:
-    /* Scene Shader Program */
-    ShaderProgram*      scene_shader_program;
-
     /* Models in the scene */
+    ShaderProgram* scene_shader_program;
     std::vector<Model*> models = std::vector<Model*>();
     
     /* Scene Camera */
@@ -61,7 +59,7 @@ public:
     std::vector<Model*> GetSceneModels(void);
     // glm::mat4       GetSceneLightViewMatrix(void);
     // glm::mat4       GetSceneLightProjectionMatrix(void);
-    void                SetSceneShaderProgram(ShaderProgram* shader);
+    void               SetSceneShaderProgram(ShaderProgram* shader);
 
     /* Camera Parameters */
     glm::mat4       GetCameraViewMatrix(void);

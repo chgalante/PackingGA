@@ -24,7 +24,7 @@ void main()
     vec3 frag_dir, view_dir, reflection_dir;
     float diffuse = 0.0f;
     float specular = 0.0f;
-    float ambient = 0.7f;
+    float ambient = 0.5f;
     float theta;
     /* Spotlight 1 */
     frag_dir = normalize(light_position - fragment_position);

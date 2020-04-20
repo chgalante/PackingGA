@@ -152,6 +152,7 @@ void Scene::TranslateCameraRight(float distance)
         camera_position += distance * glm::vec3(camera_right.x, 0.0f, camera_right.z);
     }
 }
+
 void Scene::TranslateCameraLeft(float distance)
 {
     glm::vec3 camera_right = glm::normalize(glm::cross(camera_front, camera_up));
@@ -162,6 +163,7 @@ void Scene::TranslateCameraLeft(float distance)
         camera_position -= distance * glm::vec3(camera_right.x, 0.0f, camera_right.z);
     }
 }
+
 void Scene::TranslateCameraForward(float distance)
 {
     /* Check Boundary */
@@ -171,6 +173,7 @@ void Scene::TranslateCameraForward(float distance)
         camera_position += distance * glm::vec3(camera_front.x, 0.0f, camera_front.z);
     }
 }
+
 void Scene::TranslateCameraBackward(float distance)
 {
     /* Check Boundary */
@@ -180,6 +183,7 @@ void Scene::TranslateCameraBackward(float distance)
         camera_position -= distance * glm::vec3(camera_front.x, 0.0f, camera_front.z);
     }
 }
+
 void Scene::RotateCameraEuler(float yaw, float pitch)
 {
     camera_yaw = yaw;

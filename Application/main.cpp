@@ -48,7 +48,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 
     // Create Window and rendering context using GLFW, resolution is 800x600
-    GLFWwindow* window = glfwCreateWindow(window_width, window_height, "COMP 371 - Interactive Museum - Team 4", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(window_width, window_height, "Delivery Truck", NULL, NULL);
     if (window == NULL)
     {
         std::cerr << "Failed to create GLFW window" << std::endl;
@@ -68,8 +68,8 @@ int main()
     // Initialize GLFW Input
 	//glfwSetMouseButtonCallback(window, mouseButtonCallback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    glfwSetCursorPosCallback(window, mouse_movement_callback);
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    // glfwSetCursorPosCallback(window, mouse_movement_callback);
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     //Set background colour
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -107,7 +107,7 @@ int main()
         currentScene->Update(dt);
 
         /* Input */
-        CameraController(window, currentScene, dt);
+        // CameraController(window, currentScene, dt);
         currentScene->UpdateCameraView();
 
 		// End Frame
@@ -121,63 +121,63 @@ int main()
 	return 0;
 }
 
-void CameraController(GLFWwindow* window, Scene* currentScene, float dt)
-{
-    glm::mat4 transform;
-    // Move Forward
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) 
-    {
-        currentScene->TranslateCameraForward(dt * fCameraMovementSpeed);
-    }
-    // Move Backward
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) 
-    {
-        currentScene->TranslateCameraBackward(dt * fCameraMovementSpeed);
-    }
-    // Strafe Left
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) 
-    {
-        currentScene->TranslateCameraLeft(dt * fCameraMovementSpeed);
-    }
-    // Strafe Right
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) 
-    {
-        currentScene->TranslateCameraRight(dt * fCameraMovementSpeed);
-    }
-}
-void mouse_movement_callback(GLFWwindow* window, double xpos, double ypos)
-{
-    /* Mouse Controls */
-    if(bLockCursor)
-    {
-        float x_diff, y_diff;
-        float yaw = currentScene->GetCameraYaw();
-        float pitch = currentScene->GetCameraPitch();
+// void CameraController(GLFWwindow* window, Scene* currentScene, float dt)
+// {
+//     glm::mat4 transform;
+//     // Move Forward
+//     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) 
+//     {
+//         currentScene->TranslateCameraForward(dt * fCameraMovementSpeed);
+//     }
+//     // Move Backward
+//     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) 
+//     {
+//         currentScene->TranslateCameraBackward(dt * fCameraMovementSpeed);
+//     }
+//     // Strafe Left
+//     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) 
+//     {
+//         currentScene->TranslateCameraLeft(dt * fCameraMovementSpeed);
+//     }
+//     // Strafe Right
+//     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) 
+//     {
+//         currentScene->TranslateCameraRight(dt * fCameraMovementSpeed);
+//     }   
+// }
+// void mouse_movement_callback(GLFWwindow* window, double xpos, double ypos)
+// {
+//     /* Mouse Controls */
+//     if(bLockCursor)
+//     {
+//         float x_diff, y_diff;
+//         float yaw = currentScene->GetCameraYaw();
+//         float pitch = currentScene->GetCameraPitch();
 
-        x_diff = (window_width/2 - (float)xpos) * fCameraSensitivity;
-        y_diff = (window_height/2 - (float)ypos) * fCameraSensitivity;
+//         x_diff = (window_width/2 - (float)xpos) * fCameraSensitivity;
+//         y_diff = (window_height/2 - (float)ypos) * fCameraSensitivity;
 
-        // Because.
-        if (bFirstMouse)
-        {
-            x_diff = 90.0f;
-            y_diff = 0;
-            bFirstMouse = false;
-        }
+//         // Because.
+//         if (bFirstMouse)
+//         {
+//             x_diff = 90.0f;
+//             y_diff = 0;
+//             bFirstMouse = false;
+//         }
 
-        yaw += -x_diff;
-        pitch += y_diff;
+//         yaw += -x_diff;
+//         pitch += y_diff;
 
-        if(pitch > 89.0f)
-            pitch = 89.0f;
-        if( pitch < -70.0f)
-            pitch = -70.0f;
+//         if(pitch > 89.0f)
+//             pitch = 89.0f;
+//         if( pitch < -70.0f)
+//             pitch = -70.0f;
 
-        currentScene->RotateCameraEuler(yaw, pitch);
+//         currentScene->RotateCameraEuler(yaw, pitch);
 
-        glfwSetCursorPos(window, window_width/2, window_height/2);
-    }
-}
+//         glfwSetCursorPos(window, window_width/2, window_height/2);
+//     }
+// }
 
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes

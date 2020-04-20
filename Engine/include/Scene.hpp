@@ -78,6 +78,7 @@ public:
     void            TranslateCameraForward(float distance);
     void            TranslateCameraBackward(float distance);
     void            RotateCameraEuler(float yaw, float pitch);
+    void            RotateCameraPosition(float angle);
     void            SetCameraBoundingBox(float neg_x, float pos_x, float neg_z, float pos_z);
     bool            CheckBoundingBoxCollision(glm::vec3 pos, glm::vec3 dir, float distance);
 

@@ -10,7 +10,7 @@
                 "-g",
                 "--std=c++11",
                 "Application/main.cpp",
-                "-m64", "-o", "guacamole", 
+                "-m64", "-o", "delivery_truck", 
                 "Engine/src/Geometry.cpp",
                 "Engine/src/Model.cpp",
                 "Engine/src/Scene.cpp",

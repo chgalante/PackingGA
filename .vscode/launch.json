@@ -8,7 +8,7 @@
             "name": "C++ Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/guacamole",
+            "program": "${workspaceFolder}/delivery_truck",
             "preLaunchTask": "Build",
             "args": [],
             "stopAtEntry": false,

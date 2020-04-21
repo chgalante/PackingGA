@@ -9,7 +9,7 @@ out vec4 	pixel_colour;
 uniform sampler2D 	u_texture;
 uniform sampler2D	shadow_map;
 uniform bool		is_textured;
-uniform vec4 		fragment_colour = vec4(1.0f);
+uniform vec4 		fragment_colour;
 uniform vec3		camera_position;
 
 uniform vec3		light_position;
@@ -28,7 +28,7 @@ void main()
     float theta;
     /* Spotlight 1 */
     frag_dir = normalize(light_position - fragment_position);
-    theta = dot(frag_dir, normalize(-light_direction));    
+    theta = dot(frag_dir, normalize(-light_direction));
     if(theta > light_cutoff) 
     {
         if(light_switch)
@@ -44,7 +44,7 @@ void main()
 	{
 		vec4 texture_colour = texture(u_texture, UV);
 		pixel_colour = (diffuse + specular + ambient) * light_colour * texture_colour;
-		pixel_colour = glm::vec4(glm::vec3(pixel_colour), 1.0f);
+		pixel_colour = vec4(vec3(pixel_colour), 1.0f);
 	}
 	else
 	{

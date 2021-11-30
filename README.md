@@ -1,6 +1,3 @@
-Name: Christian Galante
-ID : 40006461
-
 3D Packing Genetic Algorithm - Delivery Truck
 ----------------------------------------------
 1. Execute the application using the executable file "delivery_truck.exe"
@@ -12,5 +9,3 @@ therefore it may be necessary to hold any of the number keys for a prolonged per
 - The algorithm is coded to run the genetic algorithm for 100 generations at a time and then restart with the same package list with a different population.
 - The parameters of the algorithm can be changed using the "#define"s in the DeliveryTruck.cpp file.
 - All relevant code to the genetic algorithm will be in "DeliveryTruck.cpp", the rest of the code in Engine and main.cpp are for the graphics engine I wrote in OpenGL.
-
-If there are any further questions, please contact me at chrisgalante22@gmail.com.
